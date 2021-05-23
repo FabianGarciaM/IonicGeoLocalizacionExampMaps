@@ -1,0 +1,118 @@
+<ion-header>
+    <!-- <ion-chip>
+        <ion-avatar>
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <ion-label>{{NameUsr}}</ion-label>
+        <ion-icon name="close-circle"></ion-icon>
+    </ion-chip> -->
+  <ion-toolbar color="primary">
+    
+    
+      <ion-buttons slot="start" >
+        <ion-menu-button ></ion-menu-button>
+      </ion-buttons>
+      <!-- <ion-buttons slot="primary" (click)="actualizaList();">
+          <ion-button ngClass="color:#fff">
+            <ion-icon slot="icon-only" name="refresh"></ion-icon>
+          </ion-button>
+      </ion-buttons> -->
+      
+    <ion-title>Almacenamiento Sicas-Up</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+        
+      <div>
+        <!-- <ion-list class="class="accordion-list ion-no-padding" lines="none" detail="false">
+          <ion-item (click)="BackRuta()">
+            <ion-icon name="md-arrow-back"></ion-icon>
+            <ion-label>{{RegresoRuta}}</ion-label>
+          </ion-item>
+        </ion-list> -->
+        <ion-list>
+          <ion-item (click)="BackRuta()">
+            <ion-icon name="arrow-back"  class="iconsrow"></ion-icon>
+            <p style="color: grey; font-size: 12px;" >{{RegresoRuta.Acronimo}}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+      <!-- <ion-text color="medium" *ngIf="ListFiles.length == 0" class="ion-padding ion-text-center">
+        <p>No documents found</p>
+      </ion-text> -->
+        <ion-list *ngFor="let item of ListFiles; let i = index;" class="accordion-list ion-no-padding" lines="none" detail="false">
+          <ion-item-sliding >
+            <ion-item tappable (click)="toggleSecction(i)" [ngClass]="{'section-active': item.open, 'section': !item.open}">
+              <ion-label class="ion-text-wrap">
+                <ion-icon slot="start" name="{{item.Icon}}" [style.color]="item.Color" ></ion-icon>
+                  {{item.FileName}}
+                <p *ngIf="item.TypeFile == 'md-paper' && item.ispdf != ''" style="padding-left: 12px;">
+                    <!-- <ion-chip class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" >
+                      <ion-label color="secondary"  (click)="downloadandOpenPDF()">
+                        <ion-icon name="cloud-download" style=" size: 15px;"></ion-icon>
+                      </ion-label>
+                    </ion-chip> -->
+                    <!-- <button mat-button (click)="downloadandOpenPDF()"><ion-icon name="cloud-download" style="color: white;"></ion-icon></button> -->
+                </p>
+              </ion-label>
+              <ion-icon slot="end" name="cloud-download" color="secondary"  *ngIf="item.TypeFile == 'md-paper' && item.ispdf != ''" (click)="downloadandOpenPDF(item)"></ion-icon>
+              <ion-icon slot="end" name="arrow-forward" *ngIf="!item.open"  class="iconsrow"></ion-icon>
+              <ion-icon slot="end" name="arrow-down" *ngIf="item.open"  class="iconsrow"></ion-icon>
+            </ion-item>
+
+            <ion-item-options side="start" >
+              <ion-item-option (click)="deleteFile(item)" color="danger">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="end">
+              <ion-item-option (click)="presentModal(item)" color="success">
+                Copy
+              </ion-item-option>
+              <ion-item-option color="primary">
+                Move
+              </ion-item-option>
+            </ion-item-options>
+            
+          </ion-item-sliding>
+          
+          <div *ngIf="item.open && item.isopen">
+            <ion-card *ngFor="let child of item.Child">
+              <ion-card-header>
+                <ion-card-subtitle>Ultima Mod: {{child.FechaMod}}</ion-card-subtitle>
+                <ion-card-title><ion-icon name="person" style="color:#1eaaf1 !important;"></ion-icon> {{child.Nombre}} {{child.ApellidoMaterno}} </ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-card-subtitle>{{child.Detalle}}</ion-card-subtitle>
+                <!-- <button mat-button (click)="openFiles()">See File</button> -->
+                <!-- <button mat-button (click)="downloadandOpenPDF()"><ion-icon name="cloud-download"></ion-icon></button> -->
+              </ion-card-content>
+              
+            </ion-card>
+          </div>
+        </ion-list>
+        
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="secondary-shade">
+          <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+
+          <ion-fab-list side="top">
+            <ion-fab-button>
+              <ion-icon name="document" (click)="uploadfile()"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button>
+              <ion-icon name="document" (click)="createFile()"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button>
+              <ion-icon name="folder" (click)="createFolder()"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+
+
+</ion-content>

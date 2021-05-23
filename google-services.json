@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "488089038595",
+    "firebase_url": "https://notifischool.firebaseio.com",
+    "project_id": "notifischool",
+    "storage_bucket": "notifischool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488089038595:android:2b63d6fda2c47d20",
+        "android_client_info": {
+          "package_name": "io.fcm.notifischool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488089038595-ejgvo40qqpro9jhkhe4cjarq2ddndoqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA12hj7rpjCGBHtPpUkpPbkvdiAGM9vFbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488089038595-ejgvo40qqpro9jhkhe4cjarq2ddndoqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

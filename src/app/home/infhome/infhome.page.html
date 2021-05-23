@@ -1,0 +1,60 @@
+<ion-header>
+  <!-- <ion-chip>
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>{{NameUsr}}</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+  </ion-chip> -->
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start" >
+        <ion-menu-button ></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="primary" (click)="ngOnInit();">
+          <ion-button ngClass="color:#fff">
+            <ion-icon slot="icon-only" name="refresh"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+    <ion-title>Notificaciones Recientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle center>Card Subtitle</ion-card-subtitle>
+      <ion-card-title center>Card Title</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card> -->
+  <ion-list class="accordion-list" *ngFor="let noti of ListaHome; let i = index" no-padding  detail="false" class="childitem">
+    <ion-item (click)="toggleSection(i)" detail-none 
+                  [ngClass]="{'section-activate': noti.open, 'section': !noti.open}">
+                  <ion-icon slot="start" name='md-clock' [style.color]="noti.ColorAviso"></ion-icon>
+                  <ion-label>
+                    {{ noti.NombreAlerta }} 
+                    <p>Vencimiento: {{noti.FechaVencimiento}}</p>
+                  </ion-label>
+                  <ion-icon slot="end" name="arrow-forward" *ngIf="!noti.open"></ion-icon>
+                  <ion-icon slot="end" name="arrow-down" *ngIf="noti.open"></ion-icon>
+      </ion-item>
+      <ion-card >
+        <ion-list *ngIf="noti.open" lines="none" class="childitem">
+                <ion-item tappable class="" text-wrap >
+                    <ion-card-header>
+                        <ion-card-subtitle>Fecha Registro - {{noti.FechaRegistro | date:'dd-MM-yyyy'}}</ion-card-subtitle>
+                        <ion-card-title>{{noti.NombreMedio}}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <!-- Direccion: <ion-card-subtitle>{{noti.LugarEvento}}</ion-card-subtitle>
+                        Evento: <ion-card-subtitle>{{noti.eventscol}}</ion-card-subtitle> -->
+                    </ion-card-content>
+                </ion-item> 
+        </ion-list>
+      </ion-card>
+  </ion-list>
+</ion-content>

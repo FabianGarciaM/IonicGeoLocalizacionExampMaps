@@ -1,0 +1,83 @@
+
+<ion-split-pane>
+  <ion-menu contentId="content">
+ 
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content >
+          <ul class="list contlog">
+              <ion-avatar class="logschool">
+                  <img src="../assets/homeverde.png">
+              </ion-avatar>
+          </ul>
+          <!-- <ion-card text-center class="hide-card" *ngFor="let inf of ListInfoUsr"> -->
+              <!-- <img [src]="this.Logo" class="custom-avatar"/> -->
+              <!-- <h2>{{inf.nombreEscuela}}</h2>
+              <p>Calle:{{inf.calle1}} - Calle:{{inf.Name}}</p>
+              <p>CP:{{inf.CP}} - Num:{{inf.Telefono}}</p>
+          </ion-card> -->
+
+          <ion-list>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+              <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
+                <ion-icon [name]="p.icon" [style.color]="p.color" slot="start" ></ion-icon>
+                <ion-label>
+                  {{ p.title }}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+     
+            <ion-item (click)="logoutUser()">
+
+              <ion-icon name="log-out" slot="start" style="color: #6694FF ;"></ion-icon>
+              Logout
+
+              <!-- <ion-fab-button (click)="logoutUser()">
+                <ion-icon name="Logout"></ion-icon>
+              </ion-fab-button> -->
+            </ion-item>
+     
+          </ion-list>
+
+          <ion-card *ngIf="scannedCode">
+            <ion-card-content>
+              <p>Result: {{scannedCode}}</p>
+            </ion-card-content>
+          </ion-card>
+          
+          
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+            <ion-fab-button>
+              <ion-icon name="settings"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-list side="start">
+
+            
+              <ion-fab-button >
+                  <ion-fab-button (click)="createQR()">
+                    <ion-icon name="barcode"></ion-icon>
+                  </ion-fab-button>
+              </ion-fab-button>
+      
+
+              <ion-fab-button >
+                <ion-fab-button (click)="callSchool()">
+                  <ion-icon name="call"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-button>
+
+            </ion-fab-list>
+          </ion-fab>
+    </ion-content>
+ 
+  </ion-menu>
+ 
+  <ion-router-outlet id="content" main></ion-router-outlet>
+ 
+</ion-split-pane>
+
+ 

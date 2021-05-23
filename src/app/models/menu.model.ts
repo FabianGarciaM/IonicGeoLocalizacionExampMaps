@@ -1,0 +1,25 @@
+export class Menu{
+    idUser:number;
+    idAlumno:number;
+    Nombre:string;
+    Apellidos:string;
+    CURP:string;
+    idGrupo:number;
+    Sexo:string;
+    FechaRegistro:string;
+    FechaIngreso:string;
+    idTurno:number;
+    Turno:string;
+    idEscuela:number;
+    nombreEscuela:string;
+    calle1:string;
+    Calle2:string;
+    CP:number;
+    RFC:string;
+    NumExt:number;
+    Colonia_Delegacion:string;
+    Telefono:string;
+    Apoderado:string;
+    Director:string;
+    LogoEscuela:string;
+}

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+          <ion-button color="secondary">
+            <ion-icon slot="icon-only" name="more"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+    <ion-title>Traking User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <div #map id="map"></div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="#02DB0E" *ngIf="!isTracking">
+    <ion-fab-button (click)="startTracking()">
+      <ion-icon name="locate"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="#DB1F03"  *ngIf="isTracking">
+    <ion-fab-button (click)="stopTracking()">
+      <ion-icon name="hand"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+<ion-list>
+  <ion-list-header>Previous Tracks</ion-list-header>
+  <ion-item *ngFor="let route of previousTracks">
+    {{ route.Latitud }} , {{route.Longitud}}
+    <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
+  </ion-item>
+</ion-list>
+
+  
+</ion-content>
+
+

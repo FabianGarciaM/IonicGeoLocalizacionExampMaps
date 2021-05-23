@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+          <ion-button ngClass="color:#fff">
+            <ion-icon slot="icon-only" name="refresh"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+
+    <ion-title>Eventos Importantes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+        <ion-card ngClass="Title">
+            <ion-card-header>
+                    <ion-card-title>
+                        <h5 style="color:white;">
+                        <ion-icon name="notifications"></ion-icon>
+                          Notificaciones Recientes
+                        </h5>
+                </ion-card-title>
+            </ion-card-header>
+        </ion-card>
+        
+        <ion-list class="accordion-list" *ngFor="let event of ListEvents; let i = index" no-padding  detail="false" class="childitem">
+                <ion-item (click)="toggleSection(i)" detail-none 
+                  [ngClass]="{'section-activate': event.open, 'section': !event.open}">
+                    <ion-icon slot="end" [name]='event.Eventicon' [style.color]="event.color"></ion-icon>
+                    {{ event.title }}  
+                    <ion-icon slot="start" name="arrow-dropright" *ngIf="!event.open"></ion-icon>
+                    <ion-icon slot="start" name="arrow-dropdown" *ngIf="event.open"></ion-icon>
+                </ion-item>
+                <ion-card >
+                  <ion-list *ngIf="event.open" lines="none" class="childitem">
+                          <ion-item tappable class="" text-wrap >
+                              <ion-card-header>
+                                  <ion-card-subtitle>{{event.start | date:'dd-MM-yyyy'}} - {{event.end | date:'dd-MM-yyyy'}}</ion-card-subtitle>
+                                  <ion-card-title>{{event.title}}</ion-card-title>
+                              </ion-card-header>
+                              <ion-card-content>
+                                  Direccion: <ion-card-subtitle>{{event.LugarEvento}}</ion-card-subtitle>
+                                  Evento: <ion-card-subtitle>{{event.eventscol}}</ion-card-subtitle>
+                              </ion-card-content>
+                          </ion-item> 
+                  </ion-list>
+                </ion-card>
+        </ion-list>
+   
+</ion-content>

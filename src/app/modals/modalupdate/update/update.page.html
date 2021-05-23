@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title >{{folder || 'Update File'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text color="medium" *ngIf="directoris.length == 0" >
+    <p>No tiene ningun Archivo</p>
+  </ion-text>
+
+  <ion-list *ngFor="let f of directoris; let i = index;">
+    <ion-item (click)="itemSelected(f)">
+      <ion-icon name="folder" slot="start" *ngIf="!f.isFile"></ion-icon>
+      <ion-icon name="document" slot="start" *ngIf="f.isFile"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        {{f.name}}
+        <p>{{f.fullPath}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <ion-button expand="full" fill="outline" (click)="closeModal()">close modal</ion-button>
+</ion-content>

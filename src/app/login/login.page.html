@@ -1,0 +1,38 @@
+<ion-content class="ion-padding ion-text-center" >
+   
+ 
+          <!-- <div width="60px">
+              <img src="../assets/logo.png" /> 
+          </div>   -->
+        <div style="size: 14px;">
+          <ion-img src="../assets/login.png" ></ion-img>
+        </div>
+        
+        <ion-toolbar>
+          <ion-title>Welcome</ion-title>
+        </ion-toolbar>
+    
+
+        
+        <form [formGroup]="credentialsForm" (ngSubmit)="loginUser()">
+        <ion-list>
+          <ion-item>
+              <ion-icon name="contact" ></ion-icon>
+              <ion-input type="email" formControlName="user" color="primary"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-icon name="key" ></ion-icon>
+              <ion-input type="password" formControlName="password" color="primary"></ion-input>
+            </ion-item>
+            
+          </ion-list> 
+        
+            <ion-button expand="block" fill="outline"  type="submit" [disabled]="!credentialsForm.valid">Login</ion-button>
+        
+        </form>
+</ion-content>
+
+
+      
+  

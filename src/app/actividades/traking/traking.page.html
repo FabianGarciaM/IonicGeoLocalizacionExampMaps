@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-header>
+    <ion-toolbar  color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="primary">
+            <ion-button color="secondary">
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+      <ion-title>Seguimiento</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-header>
+
+<ion-content >
+
+  <!-- <div>
+    <ion-img src="../assets/traking.png" ></ion-img>
+  </div> -->
+
+  <!-- <p>Latitud:  {{lat}}</p>
+  <p>Longitud: {{lon}}</p> -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="starttrak" *ngIf="!isTracking">
+    <ion-fab-button (click)="startTracking()">
+      <ion-icon name="locate"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="stoptrak" *ngIf="isTracking">
+    <ion-fab-button (click)="stopTracking()">
+      <ion-icon name="hand"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  
+</ion-content>
